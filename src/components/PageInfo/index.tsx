@@ -27,9 +27,7 @@ export default function PageInfo({ title, pageInfo, orient }: IProps) {
   const cataglory: string[] = Object.keys(pageInfo)
   return (
     <div className="page-info-component">
-      <TagItem title="i am title" />
       <div className="page-container">
-
         <div className="page-buttons">
           <div className={"page-buttons-wrapper" + (isOpen ? " open-wrapper" : " ")} >
             <img src={wrapperPic} alt="" />
