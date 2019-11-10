@@ -1,0 +1,47 @@
+@MAP_FIELD_WIDTH: 100%;
+
+html,
+body {
+  width: 100%;
+  background-color: aliceblue;
+
+  .login-page {
+    color: darkblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .img {
+      &-container {
+        width: @MAP_FIELD_WIDTH;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .img-item {
+          flex: none;
+          width: 25%;
+          height: auto;
+
+          &:hover {
+            transition: all;
+            transition-duration: 800ms;
+            transform: scale(1.05);
+            border: 1px red solid;
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+
+
+}

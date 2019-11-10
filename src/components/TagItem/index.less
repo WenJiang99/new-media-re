@@ -1,0 +1,29 @@
+.tag-item-component {
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .tag {
+    &-container {
+      background-image: url("../../assets/images/pages/selector.png");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+
+    &-title {
+      width: fit-content;
+      padding: 10px;
+      font-size: 1.2em;
+      font-weight: 500;
+      text-align: center;
+    }
+
+  }
+}
+
+.show-item {
+  transition: all;
+  transition-duration: 200ms;
+  transform: scaleX(1.3) translateX(-10%);
+}
