@@ -4,6 +4,7 @@ import './index.less'
 import pic from "../../assets/images/004.jpg"
 
 import { Button } from "antd"
+import VPageInfo from '../../components/VPageInfo'
 
 
 export default function Home({ history }) {
@@ -30,10 +31,7 @@ export default function Home({ history }) {
   })
   return (
     <div className="main">
-      <Button onClick={() => history.push("/user")}>User</Button>
-      <div className="canvas">
-        {/* <canvas id="canvas" width="500px" height="500px" ref={canvasRef}></canvas> */}
-      </div>
+      <VPageInfo />
     </div>
   )
 }

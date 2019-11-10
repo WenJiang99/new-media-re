@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const webpack = require('webpack')
-const ImageminWebpackPlguin = require('imagemin-webpack-plugin')
+// const ImageminWebpackPlguin = require('imagemin-webpack-plugin')
 
 const commonConfig = {
   entry: {

@@ -1,5 +1,6 @@
-import { ICatagloryInfo } from "src/components/PageInfo";
+
 import pic from "../../assets/images/pages/1.jpg"
+import { ICatagloryInfo } from "../../interfaces/cataglory"
 
 export const PAGE_MOCK_INFO: ICatagloryInfo = {
   "教育学": [
@@ -142,5 +143,5 @@ export const PAGE_MOCK_INFO: ICatagloryInfo = {
       img: pic
     }
   ],
-  
+
 }

@@ -3,32 +3,24 @@ import "./index.less"
 import wrapperPic from "../../assets/images/pages/wrapper.png"
 import wrapperButtonPic from "../../assets/images/pages/button.png"
 import TagItem from "../TagItem"
+import { ICatagloryInfo } from "../../interfaces/cataglory"
 
 export interface IProps {
   title: string
   pageInfo: ICatagloryInfo
   orient: 'horizonal' | 'vertical'
 }
-export interface ICatagloryInfo {
-  [k: string]: IPersonInfo[]
-}
 
-export interface IPersonInfo {
-  name: string
-  field: string
-  description: string,
-  img: string,
-}
 
 export default function PageInfo({ title, pageInfo, orient }: IProps) {
+  const INIT_INDEX = -1
 
   const [isOpen, setIsOpen] = React.useState(false)
-  const [currentIndex, setCurrentIndex] = React.useState(-1)
+  const [currentIndex, setCurrentIndex] = React.useState(INIT_INDEX)
   const [showTag, setShowTag] = React.useState(false)
   const cataglory: string[] = Object.keys(pageInfo)
 
   React.useEffect(() => {
-    // isOpen && setTimeout(() => setShowTag(true), 1000)
     isOpen && setShowTag(true)
   }, [isOpen])
 
@@ -38,14 +30,14 @@ export default function PageInfo({ title, pageInfo, orient }: IProps) {
         <div className={"tag-list " + (showTag ? "tag-list-open" : "tag-list-unopen")}>
           {
             cataglory.map((item, index) => (
-              <div className="tag-item" key={item}>
+              <div className={"tag-item " + (index === currentIndex ? "active-item" : "")} key={item} >
                 <TagItem title={item} cb={() => setCurrentIndex(index)} />
               </div>
             ))
           }
         </div>
         {
-          currentIndex > -1 ?
+          currentIndex > INIT_INDEX + 1000000 ?
             <div>
               {currentIndex}
             </div>
