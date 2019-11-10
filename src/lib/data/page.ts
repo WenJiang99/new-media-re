@@ -122,4 +122,25 @@ export const PAGE_MOCK_INFO: ICatagloryInfo = {
       img: pic
     }
   ],
+  "心理学": [
+    {
+      name: "鲁迅",
+      field: "写作",
+      description: "中国伟大的文学家",
+      img: pic
+    },
+    {
+      name: "鲁迅",
+      field: "写作",
+      description: "中国伟大的文学家",
+      img: pic
+    },
+    {
+      name: "鲁迅",
+      field: "写作",
+      description: "中国伟大的文学家",
+      img: pic
+    }
+  ],
+  
 }

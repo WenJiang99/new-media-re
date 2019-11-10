@@ -4,7 +4,7 @@ import "./index.less"
 
 interface IProps {
   title: string,
-  cb?: () => {}
+  cb?: () => any
 }
 export default function TagItem({ title, cb }: IProps) {
   const [isShow, setIsShow] = React.useState(false)

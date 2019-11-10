@@ -3,7 +3,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const ParallelUglifyJs = require('webpack-parallel-uglify-plugin')
 const commonConfig = require('./webpack.common')
 const webpack = require("webpack")
-const ImageminWebpackPlugin = require("imagemin-webpack-plugin").default
+// const ImageminWebpackPlugin = require("imagemin-webpack-plugin").default
 
 const prodConfig = {
   mode: 'production',
@@ -24,10 +24,10 @@ const prodConfig = {
           DEBUG: false
         }
       }),
-      new ImageminWebpackPlugin({
-        test: 'src/assets/images/**',
-        disable:false,
-      })
+      // new ImageminWebpackPlugin({
+      //   test: 'src/assets/images/**',
+      //   disable:false,
+      // })
 
     ]
   }

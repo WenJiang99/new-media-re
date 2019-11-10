@@ -4,6 +4,7 @@ ul {
 }
 
 @CONTAINER_WIDTH: 70%;
+@TAG_LIST_MARGIN: -10%;
 
 @keyframes button-animation {
   from {
@@ -32,10 +33,40 @@ ul {
   .page-container {
     width: @CONTAINER_WIDTH;
     height: @CONTAINER_WIDTH/1.5;
+    background-color: #ffff99;
     display: flex;
     flex-direction: row;
-    background-color: #ffff99;
 
+    .tag-list {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: transparent;
+      text-align: center;
+
+      &-unopen {
+        width: 0;
+        overflow: hidden;
+      }
+
+      &-open {
+        transition: all;
+        // transition-duration: 1000ms;
+        width: 10%;
+        max-height: 20%;
+        background-color: transparent;
+        z-index: 1;
+      }
+
+      .tag-item {
+        margin-bottom: 20px;
+      }
+    }
+
+    .page-unopen-info {
+      display: flex;
+      flex-direction: row;
+    }
 
     .page-buttons {
       display: flex;
@@ -55,13 +86,14 @@ ul {
 
       .open-wrapper {
         transition: all;
-        transition-duration: 3000ms;
+        // transition-duration: 1000ms;
+        // transform: translateX((-@TAG_LIST_MARGIN)-(95%)) rotateY(180deg);
         transform: translateX(-100%) rotateY(180deg);
       }
 
       .open-wrapper-button {
         transition: all;
-        transition-duration: 1s;
+        // transition-duration: 1000ms;
         transform: rotateZ(90deg);
       }
 
