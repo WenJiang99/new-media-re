@@ -11,7 +11,7 @@ export default function School({ }: IProps) {
   return (
     <div className='school-page'>
       <div className="page-info">
-        <PageInfo title='学校档案袋' orient='horizonal' pageInfo={PAGE_MOCK_INFO} />
+        <PageInfo title='电影院档案袋' orient='horizonal' pageInfo={PAGE_MOCK_INFO} />
       </div>
     </div>
   )
