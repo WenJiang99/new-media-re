@@ -28,11 +28,11 @@ export default function PageInfo({ title, pageInfo, orient, color }: IProps) {
   }, [isOpen])
 
   return (
-    <div className="page-info-component">
-      <div className="page-container">
+    <div className="page-info-component page-open-transition">
+      <div className="page-container content-show-transition">
         {
           currentKey ?
-            <div className="page-open-transition page-open">
+            <div className="cataglory-open-transition page-open">
               {/* <div className="cataglory-wrapper">
                 <img src={wrapperOpenPic} alt="" />
               </div> */}
