@@ -9,7 +9,7 @@ interface IProps {
 export default function School({ }: IProps) {
 
   return (
-    <div className='school-page'>
+    <div className='school-page c-flex-column-center'>
       <div className="page-info">
         <PageInfo title='电影院档案袋' orient='horizonal' pageInfo={PAGE_MOCK_INFO} />
       </div>
