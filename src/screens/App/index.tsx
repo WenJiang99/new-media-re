@@ -5,7 +5,7 @@ import "../../assets/styles/common.less"
 import Loading from "../../components/Loading"
 
 const Test = lazy(() => import(/*webpackChunkName:"home"*/"../Test"))
-const Login = lazy(() => import(/*webpackChunkName:"login"*/"../Login"))
+const Carrier = lazy(() => import(/*webpackChunkName:"login"*/"../Carrier"))
 const Home = lazy(() => import(/*webpackChunkName:"user"*/"../Home"))
 const School = lazy(() => import(/*webpackChunkName:"school" */"../School"))
 const Cinema = lazy(() => import(/*webpackChunkName:"cinema" */"../Cinema"))
@@ -20,7 +20,7 @@ export default function App() {
       <Suspense fallback={<Loading text="loading contents..." />}>
         <Switch>
           <Route path="/test" component={Test} />
-          <Route path="/login" component={Login} />
+          <Route path="/carrier" component={Carrier} />
           <Route path='/school' component={School} />
           <Route path='/cinema' component={Cinema} />
           <Route path="/home" component={Home} />

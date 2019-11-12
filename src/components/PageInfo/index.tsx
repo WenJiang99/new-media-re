@@ -6,45 +6,57 @@ import wrapperButtonPic from "../../assets/images/pages/button.png"
 import TagItem from "../TagItem"
 import { ICatagloryInfo } from "../../interfaces/cataglory"
 import CatagloryInfo from "../CatagloryInfo"
-import { Button } from "antd"
+import { Button, Modal } from "antd"
+import { RouteComponentProps } from "react-router"
 
-export interface IProps {
+type IProps = {
   title: string
   pageInfo: ICatagloryInfo
   orient: 'horizonal' | 'vertical'
   color?: string
-}
+
+} & RouteComponentProps
 
 
-export default function PageInfo({ title, pageInfo, orient, color }: IProps) {
+export default function PageInfo({ title, pageInfo, orient, color, history }: IProps) {
   const INIT_INDEX = null
   const INIT_FONT_SIZE = 14
   const FONT_STEP = 1
+  const MAX_FONT = 19
+  const MIN_FONT = 12
+  const [REACH_MAX, REACH_MIN, MODAL_INIT] = [1, -1, 0]
 
   const [isOpen, setIsOpen] = React.useState(false)
   const [currentKey, setCurrentKey] = React.useState(INIT_INDEX)
   const [showTag, setShowTag] = React.useState(false)
   const [fontSize, setFontSize] = React.useState(INIT_FONT_SIZE)
+  const [showModal, setShowModal] = React.useState(MODAL_INIT)
   const cataglory: string[] = Object.keys(pageInfo)
 
   React.useEffect(() => {
     isOpen && setTimeout(() => setShowTag(true), 1000)
+    // console.log(history, 'history')
   }, [isOpen])
 
   return (
     <div className="page-info-component page-open-transition">
 
-      <div className="page-container content-show-transition" style={{ fontSize: fontSize + "px" }}>
+      <div className="page-container content-show-transition" >
         {
           currentKey ?
             <div className="cataglory-open-transition page-open">
               <div className="button-groups c-flex-column-center">
-                <Button onClick={() => setFontSize(fontSize + FONT_STEP)}>A+</Button>
-                <Button onClick={() => setFontSize(fontSize - FONT_STEP)}>A-</Button>
+                <Button onClick={() => fontSize >= MAX_FONT ? setShowModal(REACH_MAX) : setFontSize(fontSize + FONT_STEP)}>A+</Button>
+                {/* <Button onClick={() => history.replace("/home")} >Home</Button> */}
+                <Button onClick={() => fontSize <= MIN_FONT ? setShowModal(REACH_MIN) : setFontSize(fontSize - FONT_STEP)}>A-</Button>
               </div>
-              {/* <div className="cataglory-wrapper">
-                <img src={wrapperOpenPic} alt="" />
-              </div> */}
+              <Modal
+                title='字体调节'
+                keyboard={true}
+                visible={showModal === REACH_MIN || showModal === REACH_MAX}
+                onOk={() => setShowModal(MODAL_INIT)}
+                onCancel={() => setShowModal(MODAL_INIT)}
+              >字体不能再{showModal === REACH_MIN ? '小' : '大'}啦</Modal>
               <div className="page-open-wrapper">
                 <div className={"tag-list"}>
                   {
@@ -56,7 +68,7 @@ export default function PageInfo({ title, pageInfo, orient, color }: IProps) {
                   }
                 </div>
               </div>
-              <div className='cataglory-info' style={{ backgroundColor: color || '#ffff99' }}>
+              <div className='cataglory-info' style={{ backgroundColor: color || '#ffff99', fontSize: fontSize + "px" }}>
                 <CatagloryInfo personList={pageInfo[currentKey]} />
               </div>
             </div>
