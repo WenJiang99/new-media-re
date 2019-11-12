@@ -18,8 +18,8 @@ body {
 
 
 .page-info-component {
-  width: 1200px;
-  height: 700px;
+  // width: 1050px;
+  // height: 650px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -51,15 +51,17 @@ body {
       &-wrapper {
         width: 20%;
         height: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
         background-image: url('../../assets/images/pages/wrapper_open.png');
         background-repeat: no-repeat;
         background-size: 100% 100%;
-        position: relative;
+        // position: relative;
       }
 
       .tag-list {
-        position: absolute;
-        right: 0;
         width: 60%;
         height: 100%;
         display: flex;
@@ -70,8 +72,8 @@ body {
         text-align: center;
 
         .tag-item {
+          flex: 0 1 auto;
           width: 80%;
-          // max-width: 85%;
           margin-bottom: 20px;
         }
 
