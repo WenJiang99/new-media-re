@@ -9,8 +9,9 @@ interface IProps {
   fieldTitle?: string
   descriTitle?: string
   initIndex: number
+  color?: string
 }
-export default function CatagloryInfo({ personList, fieldTitle, descriTitle, initIndex }: IProps) {
+export default function CatagloryInfo({ personList, fieldTitle, descriTitle, initIndex, color }: IProps) {
   const INIT_INDEX = 0
   const [currentIndex, setCurrentIndex] = React.useState(INIT_INDEX)
   let currentPerson = currentIndex >= personList.length ? personList[0] : personList[currentIndex]
@@ -27,9 +28,11 @@ export default function CatagloryInfo({ personList, fieldTitle, descriTitle, ini
               </div>
             </div>
             <div className="person-info-descri" >
-              <div className="person-info-title">{descriTitle || '主要事迹'}</div>
-              <div className="person-info-value">
-                {currentPerson.description}
+              <div className="person-info-title descri-title">{descriTitle || '主要事迹'}</div>
+              <div className="descri-info">
+                <div className="person-info-value">
+                  {currentPerson.description}
+                </div>
               </div>
             </div>
           </div>

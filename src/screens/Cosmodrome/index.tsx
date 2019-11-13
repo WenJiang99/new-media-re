@@ -1,21 +1,26 @@
 import * as React from "react"
 import "./index.less"
 import PageInfo from "../../components/PageInfo"
-import { PAGE_MOCK_INFO } from "../../lib/data/page"
 import { COSMODROME_DATA } from "../../lib/data/cosmodrome"
-import PageMenuButton from "../../components/PageMenuButton"
 import { RouteComponentProps } from "react-router"
+import { Button } from "antd"
+import Background from "../../components/Background"
+import PageMenuButton from "../../components/PageMenuButton"
+import bg from '../../assets/images/pages/cosmodrome/bg.png'
 
-interface IProps {
-
-}
-export default function School({history }: RouteComponentProps) {
+export default function School({ history }: RouteComponentProps) {
 
   return (
-    <div className='cosmodrome-page c-flex-column-center'>
+    <div className='page c-flex-column-center c-use-background'>
+      <Background img={bg} />
       <PageMenuButton history={history} />
       <div className="page-info">
-        <PageInfo title='档案袋' orient='horizonal' pageInfo={COSMODROME_DATA} color='#f4d278' />
+        <PageInfo
+          title='档案袋'
+          orient='horizonal'
+          pageInfo={COSMODROME_DATA}
+          wrapperColor='#1F9494' color='#B9CCBC' textColor='#5B7877'
+          fieldTitle='主要职务' />
       </div>
     </div>
   )

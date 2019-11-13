@@ -3,7 +3,7 @@
     transition: all;
     transition-duration: 2000ms;
     transform: scale(1.1);
-    background-color: red;
+    background-color: grey;
     border-radius: 10px;
   }
 
@@ -33,14 +33,14 @@
   }
 
   to {
-    transform: scale(1);
+    transform: scale(0.5);
   }
 }
 
 @keyframes open-cataglory {
   from {
     transition: all;
-    transform: rotateZ(180deg);
+    transform: rotateX(180deg);
     opacity: 0;
   }
 
@@ -48,7 +48,15 @@
     opacity: 1;
   }
 }
+@keyframes active-item {
+  from {
+    width: 100%;
+  }
 
+  to {
+    width: 120%;
+  }
+}
 .page-open-transition {
   animation-name: open-page;
   animation-duration: 5s;

@@ -1,6 +1,7 @@
 .page-unopen {
   width: 100%;
-  height: 80%;
+  // height: 80%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -8,6 +9,7 @@
 
   .tag-list {
     width: 10%;
+    font-size: 1.5em;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,6 +48,7 @@
     flex-direction: row;
     background-color: @BG_COLOR;
     width: 100%;
+    height: 90%;
 
     .page-buttons {
       display: flex;
@@ -56,6 +59,9 @@
       &-wrapper {
         width: 60%;
         height: 100%;
+        border-radius: 0 65% 61% 0;
+
+
 
         img {
           width: 100%;
@@ -111,15 +117,15 @@
 
 
       &-title {
-        font-size: 3rem;
+        font-size: 4.5em;
         font-weight: 700;
-        line-height: 2em;
+        line-height: 2.5em;
         letter-spacing: 16px;
         margin-bottom: 10px;
       }
 
       &-items {
-        font-size: 1.8em;
+        font-size: 3.5em;
 
         font-weight: 500;
         text-align: left;

@@ -14,7 +14,7 @@
         display: flex;
         flex-direction: row;
         width: 100%;
-        height: 100%;
+        height: 90%;
       }
 
       &-info {
@@ -32,18 +32,40 @@
         }
 
         &-descri {
-          overflow-y: auto;
+          overflow: hidden;
           position: relative;
+
+          .descri-title {
+            position: static;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
+
+          .descri-info {
+            margin-right: -5%;
+            padding-right: 5%;
+            padding-left: 5%;
+            max-height: 80%;
+            word-break: break-all;
+            line-break: auto;
+            overflow-y: auto;
+          }
         }
 
         &-title {
           font-size: 1.7em;
-          position: static;
         }
 
         &-value {
           font-size: 1.2em;
-          padding-left: 10%;
+          padding-left: 5%;
+          // overflow: hidden;
+          overflow-y: auto;
 
         }
       }
@@ -81,8 +103,9 @@
 
     .item-selector {
       &-list {
+        flex: 1;
         width: 100%;
-        height: 20%;
+        // height: 20%;
         flex-wrap: nowrap;
       }
 

@@ -15,6 +15,9 @@ const Cosmodrome = lazy(() => import(/*webpackChunkName:"cosmodrome" */"../Cosmo
 const Dam = lazy(() => import(/*webpackChunkName:"dam" */"../Dam"))
 const Gymnasium = lazy(() => import(/*webpackChunkName:"gymnasium" */"../Gymnasium"))
 const Hospital = lazy(() => import(/*webpackChunkName:"hospital" */"../Hospital"))
+const Bank = lazy(() => import(/*webpackChunkName:"bank" */'../Bank'))
+const Goverment = lazy(()=>import(/*webpackChunkName:"government" */'../Government'))
+
 // import loadable from "@loadable/component"
 // const Home = loadable(() => import("../Home"))
 // const Login = loadable(() => import("../Login"))
@@ -35,6 +38,8 @@ export default function App() {
           <Route path="/cosmodrome" component={Cosmodrome} />
           <Route path="/gymnasium" component={Gymnasium} />
           <Route path="/hospital" component={Hospital} />
+          <Route path="/bank" component={Bank} />
+          <Route path="/government" component={Goverment} />
           <Route path="/home" component={Home} />
           <Redirect from="" to={"/home"} />
         </Switch>

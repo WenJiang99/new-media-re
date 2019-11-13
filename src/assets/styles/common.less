@@ -16,3 +16,25 @@
   display: flex;
   flex-direction: @type;
 }
+
+.c-use-background {
+  position: relative;
+  // background-color: transparent;
+}
+
+.c-i-am-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+  z-index: -99;
+  background-color: transparent;
+
+  img {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+  }
+}
