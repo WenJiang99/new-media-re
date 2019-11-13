@@ -26,7 +26,7 @@ type IProps = {
 
 export default function PageInfo({ title, pageInfo, orient, color, fieldTitle, descriTitle, wrapperColor, textColor }: IProps) {
   const INIT_INDEX = null
-  const [MAX_FONT, MIN_FONT, FONT_STEP, INIT_FONT_SIZE] = [19, 12, 1, 14]
+  const [MAX_FONT, MIN_FONT, FONT_STEP, INIT_FONT_SIZE] = [23, 12, 1, 14]
   const [REACH_MAX, REACH_MIN, MODAL_INIT] = [1, -1, 0]
   const [INIT_PAGE_WIDTH, PAGE_H_W_FACTOR, PAGE_CONTENT_FACTOR, PAGE_MIN_WIDTH] = [1050, 650 / 1050, 0.7, 1300]
   const INIT_PAGE_COLOR = color || DEFAULT_PAGE_COLOR
