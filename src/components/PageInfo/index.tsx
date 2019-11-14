@@ -57,10 +57,12 @@ export default function PageInfo({ title, pageInfo, orient, color, fieldTitle, d
   window.onresize = initWindow
   window.onload = initWindow
   return (
-    <div className="page-info-component page-open-transition" style={{
-      width: pageWidth + 'px',
-      height: pageWidth * PAGE_H_W_FACTOR + 'px',
-    }}>
+    <div className="page-info-component page-open-transition"
+      style={{
+        width: pageWidth + 'px',
+        height: pageWidth * PAGE_H_W_FACTOR + 'px',
+      }}
+    >
 
       <div className="page-container content-show-transition" >
         {
