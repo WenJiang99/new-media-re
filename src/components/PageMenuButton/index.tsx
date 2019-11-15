@@ -20,35 +20,36 @@ export default function PageMenuButton({ history }) {
 
   const BOUNDARY_RANGE: number = 20
 
+  function moveButton(e) {
+    let [x, y] = [e.pageX, e.pageY]
+    let targetX, targetY
+    if (x < BOUNDARY_RANGE) {
+      targetX = BOUNDARY_RANGE
+    } else if (x > +BOUNDARY_POINT.x - BOUNDARY_RANGE) {
+      targetX = +BOUNDARY_POINT.x - BOUNDARY_RANGE
+    } else {
+      targetX = x
+    }
+
+    if (y < BOUNDARY_RANGE) {
+      targetY = BOUNDARY_RANGE
+    } else if (y > +BOUNDARY_POINT.y - BOUNDARY_RANGE) {
+      targetY = +BOUNDARY_POINT.y - BOUNDARY_RANGE
+    } else {
+      targetY = y
+    }
+    setPosition({
+      x: targetX,
+      y: targetY
+    })
+    // x < BOUNDARY_RANGE || x < (+BOUNDARY_POINT.x - BOUNDARY_RANGE) && y > BOUNDARY_RANGE && y < (+BOUNDARY_POINT.y - BOUNDARY_RANGE) && setPosition({ x, y })
+  }
 
   const [position, setPosition] = React.useState(INIT_POSITION)
   const [showButton, setShowButton] = React.useState(false)
   return (
     <div className={"button-group c-flex-column-center " + (showButton ? "" : "onshow-button-animation")} draggable
-      onDragEnd={(e) => {
-        let [x, y] = [e.pageX, e.pageY]
-        let targetX, targetY
-        if (x < BOUNDARY_RANGE) {
-          targetX = BOUNDARY_RANGE
-        } else if (x > +BOUNDARY_POINT.x - BOUNDARY_RANGE) {
-          targetX = +BOUNDARY_POINT.x - BOUNDARY_RANGE
-        } else {
-          targetX = x
-        }
-
-        if (y < BOUNDARY_RANGE) {
-          targetY = BOUNDARY_RANGE
-        } else if (y > +BOUNDARY_POINT.y - BOUNDARY_RANGE) {
-          targetY = +BOUNDARY_POINT.y - BOUNDARY_RANGE
-        } else {
-          targetY = y
-        }
-        setPosition({
-          x: targetX,
-          y: targetY
-        })
-        // x < BOUNDARY_RANGE || x < (+BOUNDARY_POINT.x - BOUNDARY_RANGE) && y > BOUNDARY_RANGE && y < (+BOUNDARY_POINT.y - BOUNDARY_RANGE) && setPosition({ x, y })
-      }}
+      onDragEnd={moveButton}
       style={{
         top: position.y,
         left: position.x,
@@ -72,7 +73,12 @@ export default function PageMenuButton({ history }) {
             </Button>
           </div>
           <div className="button-item">
-            <Button onClick={() => history.push('/home')}>
+            <Button onClick={() => history.push({
+              pathname: '/home',
+              state: {
+                isSecond: true
+              }
+            })}>
               <Icon type='home'></Icon>
             </Button>
           </div>

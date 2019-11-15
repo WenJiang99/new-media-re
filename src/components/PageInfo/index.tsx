@@ -26,7 +26,7 @@ type IProps = {
 
 export default function PageInfo({ title, pageInfo, orient, color, fieldTitle, descriTitle, wrapperColor, textColor }: IProps) {
   const INIT_INDEX = null
-  const [MAX_FONT, MIN_FONT, FONT_STEP, INIT_FONT_SIZE] = [23, 12, 1, 14]
+  const [MAX_FONT, MIN_FONT, FONT_STEP, INIT_FONT_SIZE] = [1.5, 0.5, 0.1, 1.0]
   const [REACH_MAX, REACH_MIN, MODAL_INIT] = [1, -1, 0]
   const [INIT_PAGE_WIDTH, PAGE_H_W_FACTOR, PAGE_CONTENT_FACTOR, PAGE_MIN_WIDTH] = [1050, 650 / 1050, 0.7, 1300]
   const INIT_PAGE_COLOR = color || DEFAULT_PAGE_COLOR
@@ -52,6 +52,8 @@ export default function PageInfo({ title, pageInfo, orient, color, fieldTitle, d
   })
 
   function initWindow() {
+    setPageWidth(window.innerWidth * PAGE_CONTENT_FACTOR)
+    return
     window.innerWidth < PAGE_MIN_WIDTH ? setPageWidth(PAGE_MIN_WIDTH * PAGE_CONTENT_FACTOR) : setPageWidth(window.innerWidth * PAGE_CONTENT_FACTOR)
   }
   window.onresize = initWindow
@@ -68,23 +70,30 @@ export default function PageInfo({ title, pageInfo, orient, color, fieldTitle, d
         {
           currentKey ?
             <div className="cataglory-open-transition page-open">
-              <div className="button-groups c-flex-column-center">
-                <Button onClick={() => fontSize >= MAX_FONT ? setShowModal(REACH_MAX) : setFontSize(fontSize + FONT_STEP)}>A+</Button>
-                <Input
+              <div className="button-groups">
+                <Button
+                  size='small'
+                  onClick={() => fontSize >= MAX_FONT ? setShowModal(REACH_MAX) : setFontSize(fontSize + FONT_STEP)}
+                >A+</Button>
+                <input
                   type='color'
-                  placeholder={pageColor}
+                  defaultValue={pageColor}
                   onChange={(e) => {
                     setPageColor(e.target['value'])
                   }}
                 />
-                <Input
+                <input
                   type='color'
+                  defaultValue={textColor}
                   onChange={(e) => {
                     setFontColor(e.target['value'])
                   }}
                 />
 
-                <Button onClick={() => fontSize <= MIN_FONT ? setShowModal(REACH_MIN) : setFontSize(fontSize - FONT_STEP)}>A-</Button>
+                <Button
+                  size='small'
+                  onClick={() => fontSize <= MIN_FONT ? setShowModal(REACH_MIN) : setFontSize(fontSize - FONT_STEP)}
+                >A-</Button>
               </div>
               <Modal
                 title='字体调节'
@@ -94,10 +103,9 @@ export default function PageInfo({ title, pageInfo, orient, color, fieldTitle, d
                 onOk={() => setShowModal(MODAL_INIT)}
                 onCancel={() => setShowModal(MODAL_INIT)}
               >字体不能再{showModal === REACH_MIN ? '小' : '大'}啦</Modal>
-              <div className="page-open-wrapper c-use-background" style={{
+              <div className="page-open-wrapper" style={{
                 backgroundColor: wrapperColor || DEFAULT_WRAPPER_COLOR
               }}>
-                {/* <Background img={openBg} opacity={1} layer={1} /> */}
                 <div className={"tag-list"}>
                   {
                     cataglory.map(item => (
@@ -110,7 +118,7 @@ export default function PageInfo({ title, pageInfo, orient, color, fieldTitle, d
               </div>
               <div className='cataglory-info' style={{
                 backgroundColor: pageColor || INIT_PAGE_COLOR,
-                fontSize: fontSize + "px",
+                fontSize: fontSize + "rem",
                 color: fontColor || DEFAULT_TEXT_COLOR
               }}>
                 <CatagloryInfo personList={pageInfo[currentKey]} fieldTitle={fieldTitle} descriTitle={descriTitle} initIndex={0} color={pageColor} />
@@ -131,10 +139,12 @@ export default function PageInfo({ title, pageInfo, orient, color, fieldTitle, d
                 backgroundColor: color || DEFAULT_PAGE_COLOR
               }}>
                 <div className="page-buttons">
-                  <div className={"page-buttons-wrapper" + (isOpen ? " open-wrapper" : " ")} style={{
-                    backgroundColor: wrapperColor || DEFAULT_WRAPPER_COLOR
-                  }} >
-                    {/* <img src={wrapperPic} alt="" /> */}
+                  <div
+                    className={"page-buttons-wrapper" + (isOpen ? " open-wrapper" : " ")}
+                    style={{
+                      backgroundColor: wrapperColor || DEFAULT_WRAPPER_COLOR
+                    }}
+                  >
                   </div>
                   <div className={"page-buttons-button " + (isOpen ? "open-wrapper-button" : "unopen-wrapper-button")} onClick={() => setIsOpen(true)}>
                     <img src={wrapperButtonPic} alt="" />
